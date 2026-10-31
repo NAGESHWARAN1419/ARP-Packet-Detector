@@ -1,12 +1,3 @@
-
-"""
-Advanced Packet Sniffer + ARP Spoofing Detector
-Beginner-friendly educational project.
-
-Use live capture only on networks you own or have
-explicit permission to monitor.
-"""
-
 import argparse
 import csv
 import os
@@ -15,22 +6,17 @@ from datetime import datetime
 from scapy.all import ARP, IP, TCP, UDP, ICMP, sniff
 
 
-# These files store our results.
 PACKET_FILE = "packet_log.csv"
 ALERT_FILE = "arp_alerts.csv"
 
 
 class ARPDetector:
-    """Remember IP-to-MAC mappings and detect changes."""
 
     def __init__(self):
-        # Example: {"192.168.1.1": "aa:bb:cc:dd:ee:ff"}
         self.known_mappings = {}
 
     def check_mapping(self, ip_address, mac_address):
-        """Check whether an IP address changed its MAC address."""
 
-        # Ignore empty or placeholder sender addresses.
         if not ip_address or ip_address == "0.0.0.0":
             return
 
@@ -40,12 +26,10 @@ class ARPDetector:
         old_mac = self.known_mappings.get(ip_address)
 
         if old_mac is None:
-            # First time we have seen this IP address.
             self.known_mappings[ip_address] = mac_address
             print(f"[INFO] Learned {ip_address} -> {mac_address}")
 
         elif old_mac.lower() != mac_address.lower():
-            # The same IP address now has a different MAC address.
             message = (
                 f"IP {ip_address} changed MAC from "
                 f"{old_mac} to {mac_address}"
@@ -65,17 +49,14 @@ class ARPDetector:
                 },
             )
 
-            # Remember the latest value for future comparisons.
             self.known_mappings[ip_address] = mac_address
 
 
 def timestamp():
-    """Return the current time as readable text."""
     return datetime.now().astimezone().isoformat(timespec="seconds")
 
 
 def save_row(filename, columns, row):
-    """Save one row of information to a CSV file."""
 
     file_exists = os.path.exists(filename)
     needs_header = not file_exists or os.path.getsize(filename) == 0
@@ -90,14 +71,12 @@ def save_row(filename, columns, row):
 
 
 def handle_packet(packet, detector):
-    """Read one captured packet and record a short summary."""
 
     source = "Unknown"
     destination = "Unknown"
     protocol = "Other"
     details = ""
 
-    # Is this an IPv4 packet?
     if IP in packet:
         source = packet[IP].src
         destination = packet[IP].dst
@@ -111,7 +90,6 @@ def handle_packet(packet, detector):
         else:
             protocol = "IPv4"
 
-    # Is this an ARP packet?
     if ARP in packet:
         protocol = "ARP"
 
@@ -125,8 +103,6 @@ def handle_packet(packet, detector):
             f"sender_ip={arp.psrc}"
         )
 
-        # ARP operation 2 means an ARP reply.
-        # Check replies rather than treating every request as a claim.
         if arp.op == 2:
             detector.check_mapping(arp.psrc, arp.hwsrc)
 
@@ -155,12 +131,10 @@ def run_demo():
 
     detector = ARPDetector()
 
-    # Pretend the router first has one MAC address.
     detector.check_mapping(
         "192.168.1.1", "aa:bb:cc:dd:ee:01"
     )
 
-    # Pretend the same IP suddenly has another MAC address.
     detector.check_mapping(
         "192.168.1.1", "aa:bb:cc:dd:ee:99"
     )
@@ -169,7 +143,6 @@ def run_demo():
 
 
 def main():
-    """Choose demo mode or live packet capture."""
 
     parser = argparse.ArgumentParser(
         description="Packet sniffer and ARP mapping-change detector"
