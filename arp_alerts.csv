@@ -1,0 +1,2 @@
+time,ip_address,old_mac,new_mac,message
+2026-10-31T13:02:30+05:30,192.168.1.1,aa:bb:cc:dd:ee:01,aa:bb:cc:dd:ee:99,IP 192.168.1.1 changed MAC from aa:bb:cc:dd:ee:01 to aa:bb:cc:dd:ee:99
