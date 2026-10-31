@@ -1,4 +1,4 @@
-Advanced Packet Sniffer & ARP Spoofing Detector
+ARP Spoofing Detector
 
 A Python-based network monitoring tool built using Scapy to capture IPv4 and ARP packets, identify common network protocols, monitor IP-to-MAC address mappings, and detect suspicious ARP mapping changes.
 
