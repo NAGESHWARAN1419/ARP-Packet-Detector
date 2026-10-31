@@ -62,6 +62,7 @@ Datetime Module
 Project Structure
 
 arp-detection/
+
 │
 
 ├── arp_snooping_detection.py
@@ -75,8 +76,10 @@ arp-detection/
 │
 
 └── Generated Files:
-       ├── packet_log.csv
-       └── arp_alerts.csv
+       
+         packet_log.csv
+   
+         arp_alerts.csv
 
 
 <img width="607" height="186" alt="image" src="https://github.com/user-attachments/assets/2f0e60a4-1ebd-4c53-a0a5-d8ba5a21735b" />
