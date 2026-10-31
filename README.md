@@ -182,11 +182,11 @@ Newly observed MAC address
 
 Alert message
 
+
+
 How ARP Detection Works
 
 The detector maintains a dictionary containing observed IP-to-MAC address mappings.
-
-
 
 Example:
 
@@ -223,9 +223,13 @@ Limitations
 
 
 1.The detector identifies observed IP-to-MAC mapping changes; it does not confirm an attack.
+
 2.Mapping information is stored in memory and is lost when the program restarts.
+
 3.The current implementation checks ARP replies rather than every ARP claim.
+
 4.The program does not automatically block suspicious devices.
+
 5.The packet filter captures IPv4 and ARP traffic, not all network protocols.
 
 
