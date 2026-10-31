@@ -75,13 +75,12 @@ arp-detection/
 │
 
 └── Generated Files:
-
-    ├── packet_log.csv
-    
-    └── arp_alerts.csv
+       ├── packet_log.csv
+       └── arp_alerts.csv
 
 
 <img width="607" height="186" alt="image" src="https://github.com/user-attachments/assets/2f0e60a4-1ebd-4c53-a0a5-d8ba5a21735b" />
+
 
 
 Requirements
@@ -99,15 +98,15 @@ Installation
 
 1. Clone the repository
 
-git clone https://github.com/NAGESHWARAN1419/ARP-Spoofing-Detection.git
+          git clone https://github.com/NAGESHWARAN1419/ARP-Spoofing-Detection.git
 
 2. Navigate to the project directory
 
-cd ARP-Spoofing-Detection
+           cd ARP-Spoofing-Detection
 
 3. Install dependencies
 
-pip install -r requirements.txt
+           pip install -r requirements.txt
 
 
 
@@ -117,7 +116,7 @@ How to Run
 
 Run the following command:
 
-python3 arp_snooping_detection.py --demo
+         python3 arp_snoofing_detection.py --demo
 
 This demonstrates the ARP detection logic using simulated IP and MAC addresses. No network packets are sent.
 
@@ -132,11 +131,11 @@ ip link show
 
 Start monitoring an authorized network interface:
 
-sudo python3 arp_snooping_detection.py --interface wlan0
+     sudo python3 arp_snoofing_detection.py --interface wlan0
 
 Replace wlan0 with your actual network interface.
 
-Press Ctrl + C to stop packet capture.
+Press **Ctrl + C **to stop packet capture.
 
 <img width="944" height="299" alt="image" src="https://github.com/user-attachments/assets/0ab0b00a-7643-4131-9288-24ee2c42dce8" />
 
@@ -214,21 +213,28 @@ Learning Outcomes
 Through this project, I gained practical experience with:
 
 Network packet analysis.
+
 Address Resolution Protocol (ARP).
+
 IP and MAC address relationships.
+
 TCP, UDP, and ICMP protocols.
+
 Python classes and functions.
+
 Dictionaries and conditional statements.
+
 CSV file handling.
+
 Command-line arguments.
+
 Basic network security monitoring.
+
 Using Scapy for packet capture.
 
 
+
 Limitations
-
-<img width="424" height="434" alt="image" src="https://github.com/user-attachments/assets/c46f1837-1ee4-4247-b5d9-c8ff860546d9" />
-
 
 1.The detector identifies observed IP-to-MAC mapping changes; it does not confirm an attack.
 
