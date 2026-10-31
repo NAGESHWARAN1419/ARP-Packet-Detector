@@ -63,13 +63,21 @@ Project Structure
 
 arp-detection/
 │
+
 ├── arp_snooping_detection.py
+
 ├── README.md
+
 ├── requirements.txt
+
 ├── .gitignore
+
 │
+
 └── Generated Files:
+
     ├── packet_log.csv
+    
     └── arp_alerts.csv
 
 
